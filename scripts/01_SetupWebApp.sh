@@ -3,7 +3,7 @@
 location=West Europ
 rg=myResourceGroup
 sp=myAppServicePlan
-app=mydockerwebapp_test_gwapp
+app=mydockerwebapp-test-gwapp
 docker=guitarrapc/mydockerimage:v1.0.0
 
 cd ../docker-django-webapp-linux

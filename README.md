@@ -36,6 +36,29 @@ Install-Module AzureRM.Netcore -Scope CurrentUser
 
 ![](images/CustomDomain.png)
 
+## Monitoring
+
+Use Log Analytics for Realtime monitor.
+
+> https://blogs.technet.microsoft.com/robdavies/2017/12/29/monitoring-application-gateway-with-azure-log-analytics/
+
+![](images/LogAnalytics.png)
+
+You can search ApplicationGatewayFirewallLog with following query.
+
+```
+search *
+| where ( Type == "AzureDiagnostics" )
+| where ( ruleSetType_s == "OWASP" )
+```
+
+You can use PowerBI for accesslogging, with importing "Azure Audit Logs" report.
+But there are no ApplicationGatewayFirewallLog.
+
+> https://docs.microsoft.com/en-us/power-bi/service-connect-to-azure-audit-logs
+
+![](images/PowerBILogAnalytics.png)
+
 ## Refer
 
 > https://blogs.msdn.microsoft.com/waws/2017/11/21/setting-up-application-gateway-with-an-app-service-that-uses-azure-active-directory-authentication/
