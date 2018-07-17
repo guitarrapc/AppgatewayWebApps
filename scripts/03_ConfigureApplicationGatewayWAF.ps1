@@ -8,11 +8,11 @@
 
 $rgName = "myResourceGroup"
 $app = "mydockerwebapp.azurewebsites.net"
-$probeName = "webappprobe2"
+$probeName = "webappprobehttp"
 $gwName = "myAppGateway"
 
 $rg = Get-AzureRmResourceGroup -Name $rgName
-$gw = Get-AzureRmApplicationGateway -Name $gwName -ResourceGroupName $rg
+$gw = Get-AzureRmApplicationGateway -Name $gwName -ResourceGroupName $rg.ResourceGroupName
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 Add-AzureRmApplicationGatewayProbeConfig -name $probeName -ApplicationGateway $gw -Protocol Http -Path / -Interval 30 -Timeout 120 -UnhealthyThreshold 3 -PickHostNameFromBackendHttpSettings -Match $match
 $probe = Get-AzureRmApplicationGatewayProbeConfig -name $probeName -ApplicationGateway $gw
