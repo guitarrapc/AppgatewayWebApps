@@ -19,6 +19,23 @@ Use Shell and PowerShell Core.
 Install-Module AzureRM.Netcore -Scope CurrentUser
 ```
 
+# Confirm access
+
+* App Service Direct : NO WAF
+> http://YOUR_APP_NAME.azurewebsites.net/#
+
+![](images/WebAppDirect.png)
+
+* WAF Direct
+> http://YOUR_WAF_NAME.cloudapp.net/
+
+![](images/WafDirect.png)
+
+* WAF with CustomDomain
+> http://YOUR_CUSTOM_DOMAIN/
+
+![](images/CustomDomain.png)
+
 ## Refer
 
 > https://blogs.msdn.microsoft.com/waws/2017/11/21/setting-up-application-gateway-with-an-app-service-that-uses-azure-active-directory-authentication/
