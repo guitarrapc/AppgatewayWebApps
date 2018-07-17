@@ -5,6 +5,7 @@ rg=myResourceGroup
 sp=myAppServicePlan
 app=mydockerwebapp-test-gwapp
 docker=guitarrapc/mydockerimage:v1.0.0
+exposeport=8000
 
 cd ../docker-django-webapp-linux
 docker build --tag $docker .
@@ -14,5 +15,5 @@ az login
 az group create --name $rg --location $location
 az appservice plan create --name $sp --resource-group $rg --sku Free --is-linux
 az webapp create --resource-group $rg --plan $sp --name $app --deployment-container-image-name $docker
-az webapp config appsettings set --resource-group $rg --name $app --settings WEBSITES_PORT=8000
+az webapp config appsettings set --resource-group $rg --name $app --settings WEBSITES_PORT=$exposeport
 az webapp restart --resource-group $rg --name $app
