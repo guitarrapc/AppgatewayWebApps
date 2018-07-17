@@ -6,7 +6,7 @@ sp=myAppServicePlan
 app=mydockerwebapp_test_gwapp
 docker=guitarrapc/mydockerimage:v1.0.0
 
-cd docker-django-webapp-linux
+cd ../docker-django-webapp-linux
 docker build --tag $docker .
 docker push $docker
 

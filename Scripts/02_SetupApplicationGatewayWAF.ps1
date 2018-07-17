@@ -1,7 +1,8 @@
 # This script enable you to configure WebApps behind new WAF.
 # I do recommend not use Script to configure WAF but use Terraform.
-# If you already setup WAF, check 03_ConfigureApplicationGatewayWAF.ps1 to configure WebApps
+# If you already setup WAF, check 03_ConfigureApplicationGatewayWAF.ps1 to configure WebApps.
 
+# don't use custom domain, use yourapp.azurewebsites.net to set webapp behind waf.
 $subscription = "mysubscriptionid"
 $location = "West Europ"
 $rgName = "myResourceGroup"
@@ -34,4 +35,4 @@ $sku = New-AzureRmApplicationGatewaySku -Name WAF_Medium -Tier WAF -Capacity 2
 $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Detection
 $appgw = New-AzureRmApplicationGateway -Name $gw -ResourceGroupName $rg.Name -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -WebApplicationFirewallConfig $config
 
-# Change DNS CName with WAF -> mydockerwebapp.YOURDOMAIN.TLD
+# NOTICE : You must change DNS CName with WAF DNS or Public IP -> mydockerwebapp.YOURDOMAIN.TLD
