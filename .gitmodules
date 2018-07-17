@@ -1,0 +1,3 @@
+[submodule "docker-django-webapp-linux"]
+	path = docker-django-webapp-linux
+	url = https://github.com/Azure-Samples/docker-django-webapp-linux
